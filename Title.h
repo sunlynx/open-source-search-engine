@@ -3,7 +3,7 @@
 #ifndef GB_TITLE_H
 #define GB_TITLE_H
 
-#include <stdint.h>
+#include <inttypes.h>
 
 #define MAX_TITLE_LEN 2048
 

@@ -92,7 +92,7 @@ DEFS = -D_REENTRANT_ -I. -Ithird-party/compact_enc_det -Ithird-party/c-ares
 DEFS += -DDEBUG_MUTEXES
 CPPFLAGS = -g -fno-stack-protector -DPTHREADS
 CPPFLAGS += -std=c++11
-
+CPPFLAGS += -D__STDC_FORMAT_MACROS=1
 
 # optimization
 ifeq ($(config),$(filter $(config),release release-safe))
@@ -286,17 +286,17 @@ libcld3.so:
 	task_context.cc task_context_params.cc unicodetext.cc utils.cc workspace.cc \
 	cld_3/protos/sentence.pb.cc cld_3/protos/feature_extractor.pb.cc cld_3/protos/task_spec.pb.cc \
 	-o libcld3.so
-	ln -s $(CLD3_SRC_DIR)/libcld3.so libcld3.so
+	ln -sf $(CLD3_SRC_DIR)/libcld3.so libcld3.so
 
 libced.so:
 	cd third-party/compact_enc_det && cmake -DBUILD_SHARED_LIBS=ON . && make ced
-	ln -s third-party/compact_enc_det/lib/libced.so libced.so
+	ln -sf third-party/compact_enc_det/lib/libced.so libced.so
 
 CARES_SRC_DIR=third-party/c-ares
 libcares.so:
 	cd $(CARES_SRC_DIR) && ./buildconf && ./configure && make
-	ln -s $(CARES_SRC_DIR)/.libs/libcares.so.2 libcares.so.2
-	ln -s libcares.so.2 libcares.so
+	ln -sf $(CARES_SRC_DIR)/.libs/libcares.so.2 libcares.so.2
+	ln -sf libcares.so.2 libcares.so
 
 wanted_check_api.so: WantedCheckExampleLib.o
 	$(CXX) WantedCheckExampleLib.o -shared -o $@
@@ -347,6 +347,9 @@ dist: all
 	libpng12.so.0 \
 	tifftopnm \
 	libtiff.so.4 \
+    libcares.so.2 \
+    libcld3.so \
+    libced.so  \
 	LICENSE \
 	mysynonyms.txt \
 	wikititles.txt.part1 \

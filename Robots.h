@@ -1,7 +1,7 @@
 #ifndef GB_ROBOTS_H
 #define GB_ROBOTS_H
 
-#include <stdint.h>
+#include <inttypes.h>
 #include <vector>
 #include "RobotRule.h"
 

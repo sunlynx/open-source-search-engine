@@ -1,7 +1,7 @@
 #ifndef GB_UDPSTATISTIC_H
 #define GB_UDPSTATISTIC_H
 
-#include <stdint.h>
+#include <inttypes.h>
 #include <vector>
 #include "msgtype_t.h"
 

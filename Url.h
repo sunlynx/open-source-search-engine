@@ -11,7 +11,7 @@
 #include "TitleRecVersion.h"
 #include <cstddef>
 #include <string.h>
-#include <stdint.h>
+#include <inttypes.h>
 
 class SafeBuf;
 

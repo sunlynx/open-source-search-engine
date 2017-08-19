@@ -263,7 +263,9 @@ bool SafeBuf::reserve2x(int32_t i, const char *label) {
 
 int32_t SafeBuf::saveToFile(const char *dir, const char *filename) const {
 	char buf[1024];
-	snprintf(buf,1024,"%s/%s",dir,filename);
+
+    if (dir) snprintf(buf,1024,"%s%s",dir,filename);
+    else snprintf(buf,1024,"%s",filename);
 	return dumpToFile ( buf );
 }
 
@@ -340,11 +342,10 @@ int32_t SafeBuf::safeSave(const char *filename) const {
 	return m_length;
 }
 
-
 int32_t SafeBuf::fillFromFile(const char *dir, const char *filename, const char *label) {
 	m_label = label;
 	char buf[1024];
-	if ( dir ) snprintf(buf,1024,"%s/%s",dir,filename);
+    if ( dir ) snprintf(buf,1024,"%s%s",dir,filename);
 	else       snprintf(buf,1024,"%s",filename);
 	return fillFromFile ( buf );
 }

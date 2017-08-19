@@ -169,7 +169,7 @@ static int runConnectLoop(const char *hostname, int port_number) {
         }
 	freeaddrinfo(res);
 	//we ran through all the resolved addresses and failed to connect to any of them
-	log(LOG_ERROR,"Could not connect to url classification services, most recent errno=%d (%s)",most_recent_error,strerror(most_recent_error));
+	log(LOG_ERROR,"Could not connect to url classification services[%s:%d], most recent errno=%d (%s)",hostname,port_number,most_recent_error,strerror(most_recent_error));
 	
 	return -1;
 }

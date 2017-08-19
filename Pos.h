@@ -3,7 +3,7 @@
 #ifndef GB_POS_H
 #define GB_POS_H
 
-#include <stdint.h>
+#include <inttypes.h>
 #include "TitleRecVersion.h"
 
 // this class is used to measure the number of characters between two "words"

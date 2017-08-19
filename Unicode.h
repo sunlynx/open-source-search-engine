@@ -2,7 +2,7 @@
 #define GB_UNICODE_H
 
 #include <sys/types.h>
-#include <stdint.h>
+#include <inttypes.h>
 #include <limits.h>
 #include <stdio.h>
 #include "UnicodeProperties.h"

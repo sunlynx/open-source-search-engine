@@ -1,7 +1,7 @@
 #ifndef GB_ROBOTRULE_H
 #define GB_ROBOTRULE_H
 
-#include <stdint.h>
+#include <inttypes.h>
 #include <string>
 
 class Url;

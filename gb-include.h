@@ -22,7 +22,7 @@
 #include <ctype.h>	// Log.h
 #include <errno.h>	// Errno.h
 #include <stdarg.h>	// Log.h
-#include <stdint.h>	// commonly included in include files
+#include <inttypes.h>	// commonly included in include files
 #include <stdio.h>	// commonly included in include files
 #include <stdlib.h>	// commonly included in include files
 #include <string.h>	// commonly included in include files

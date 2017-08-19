@@ -1,7 +1,7 @@
 #ifndef GB_GBENCODING_H
 #define GB_GBENCODING_H
 
-#include <stdint.h>
+#include <inttypes.h>
 
 class HttpMime;
 

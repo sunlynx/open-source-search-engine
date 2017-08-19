@@ -7,7 +7,7 @@
 #include "types.h"
 #include "GbSignature.h"
 #include "rdbid_t.h"
-#include <stdint.h>
+#include <inttypes.h>
 
 /**
  *

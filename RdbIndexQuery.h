@@ -2,7 +2,7 @@
 #define GB_RDBINDEXQUERY_H
 
 #include "RdbIndex.h"
-#include <stdint.h>
+#include <inttypes.h>
 
 class RdbBase;
 

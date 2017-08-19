@@ -10,7 +10,7 @@
 #define GB_LOG_H
 
 #include <stdarg.h>
-#include <stdint.h>
+#include <inttypes.h>
 
 
 // THE TYPES OF LOG MESSAGES

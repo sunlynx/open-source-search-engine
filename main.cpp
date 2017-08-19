@@ -1763,7 +1763,7 @@ int main2 ( int argc , char *argv[] ) {
 	if ( !Statistics::initialize() ) {
 		return 0;
 	}
-
+    
 	initializeRealtimeUrlClassification();
 	
 	if(!WantedChecker::initialize())
