@@ -347,6 +347,9 @@ dist: all
 	libpng12.so.0 \
 	tifftopnm \
 	libtiff.so.4 \
+    libcld3.so \
+    libced.so  \
+    libcares.so.2 \
 	LICENSE \
 	mysynonyms.txt \
 	wikititles.txt.part1 \
