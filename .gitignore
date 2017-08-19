@@ -47,3 +47,6 @@ vgcore.*
 Make.depend
 libced.so
 libcld3.so
+*.pbxproj
+*.xcscheme
+*.plist
