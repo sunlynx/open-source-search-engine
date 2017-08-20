@@ -820,14 +820,14 @@ void Multicast::gotReply1 ( UdpSlot *slot ) {
 		if ( g_errno != ENOTFOUND ) {
 			// log the error
 			Host *h = g_hostdb.getUdpHost(slot->getIp(), slot->getPort());
+            char ipbuf[16];
 			if (h) {
-				log(LOG_WARN, "multicast: Got error in reply from hostId %d (msgType=0x%02x transId=%d nice=%d): %s.",
-				    h->m_hostId, (int)slot->getMsgType(), slot->getTransId(),
+				log(LOG_WARN, "multicast: Got error in reply from hostId %d [%s:% d](msgType=0x%02x transId=%d nice=%d): %s.",
+				    h->m_hostId, iptoa(slot->getIp(),ipbuf), (int32_t) slot->getPort(), (int)slot->getMsgType(), slot->getTransId(),
 				    m_niceness,
 				    mstrerror(g_errno));
 			} else {
-				char ipbuf[16];
-				log(LOG_WARN, "multicast: Got error in reply from %s:%d (msgType=0x%02x transId=%d nice =%d): %s.",
+				log(LOG_WARN, "multicast: Got error in reply from [%s:%d] (msgType=0x%02x transId=%d nice =%d): %s.",
 				    iptoa(slot->getIp(),ipbuf), (int32_t) slot->getPort(),
 				    (int)slot->getMsgType(), slot->getTransId(), m_niceness,
 				    mstrerror(g_errno));
