@@ -263,7 +263,7 @@ bool SafeBuf::reserve2x(int32_t i, const char *label) {
 
 int32_t SafeBuf::saveToFile(const char *dir, const char *filename) const {
 	char buf[1024];
-	snprintf(buf,1024,"%s/%s",dir,filename);
+	snprintf(buf,1024,"%s%s",dir,filename);
 	return dumpToFile ( buf );
 }
 

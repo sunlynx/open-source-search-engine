@@ -1763,17 +1763,19 @@ int main2 ( int argc , char *argv[] ) {
 	if ( !Statistics::initialize() ) {
 		return 0;
 	}
-
+/*
 	initializeRealtimeUrlClassification();
 	
 	if(!WantedChecker::initialize())
 		return 0;
-	
+*/
 	if(!InstanceInfoExchange::initialize())
+        log( LOG_WARN, "db: Failed to initial InstanceInfoExchange." );
 		return 0;
 
 	// . start the spiderloop
 	// . comment out when testing SpiderCache
+    log( LOG_INFO, "db: Initialing spider loop......" );
 	g_spiderLoop.init();
 
 	// allow saving of conf again
