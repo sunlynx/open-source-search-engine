@@ -1774,12 +1774,13 @@ int main2 ( int argc , char *argv[] ) {
 	
 	if(!WantedChecker::initialize())
 		return 0;
-*/
+
     log(LOG_INFO, "Initializing InstanceInfoExchange...........");
 	if(!InstanceInfoExchange::initialize())
         log( LOG_WARN, "db: Failed to Initialize InstanceInfoExchange." );
 		return 0;
-
+*/
+    
 	// . start the spiderloop
 	// . comment out when testing SpiderCache
     log( LOG_INFO, "db: Initializing spider loop......" );
