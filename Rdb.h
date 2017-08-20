@@ -61,7 +61,7 @@ public:
 		    int32_t   maxTreeMem      , //=  1024*1024*32 ,
 		    int32_t   maxTreeNodes    ,
 		    bool   useHalfKeys     ,
-		    char   keySize,
+		    int32_t   keySize,
 		    bool   useIndexFile);
 
 	bool needsSave() const;
