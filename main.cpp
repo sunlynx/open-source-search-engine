@@ -1770,12 +1770,12 @@ int main2 ( int argc , char *argv[] ) {
 		return 0;
 */
 	if(!InstanceInfoExchange::initialize())
-        log( LOG_WARN, "db: Failed to initial InstanceInfoExchange." );
+        log( LOG_WARN, "db: Failed to Initialize InstanceInfoExchange." );
 		return 0;
 
 	// . start the spiderloop
 	// . comment out when testing SpiderCache
-    log( LOG_INFO, "db: Initialing spider loop......" );
+    log( LOG_INFO, "db: Initializing spider loop......" );
 	g_spiderLoop.init();
 
 	// allow saving of conf again

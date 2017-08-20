@@ -426,15 +426,15 @@ bool Collectiondb::addRdbBasesForCollRec ( CollectionRec *cr ) {
 	//
 	//////
 	if ( g_dumpMode ) return true;
-
+    int err=0;
 	// tell rdbs to add one, too
-	if ( ! g_posdb.getRdb()->addRdbBase1        ( coll ) ) goto hadError;
-	if ( ! g_titledb.getRdb()->addRdbBase1      ( coll ) ) goto hadError;
-	if ( ! g_tagdb.getRdb()->addRdbBase1        ( coll ) ) goto hadError;
-	if ( ! g_clusterdb.getRdb()->addRdbBase1    ( coll ) ) goto hadError;
-	if ( ! g_linkdb.getRdb()->addRdbBase1       ( coll ) ) goto hadError;
-	if ( ! g_spiderdb.getRdb()->addRdbBase1     ( coll ) ) goto hadError;
-	if ( ! g_doledb.getRdb()->addRdbBase1       ( coll ) ) goto hadError;
+    if ( ! g_posdb.getRdb()->addRdbBase1        ( coll ) ) { err=1; goto hadError; }
+	if ( ! g_titledb.getRdb()->addRdbBase1      ( coll ) ) { err=2; goto hadError; }
+	if ( ! g_tagdb.getRdb()->addRdbBase1        ( coll ) ) { err=3; goto hadError; }
+	if ( ! g_clusterdb.getRdb()->addRdbBase1    ( coll ) ) { err=4; goto hadError; }
+	if ( ! g_linkdb.getRdb()->addRdbBase1       ( coll ) ) { err=5; goto hadError; }
+	if ( ! g_spiderdb.getRdb()->addRdbBase1     ( coll ) ) { err=6; goto hadError; }
+	if ( ! g_doledb.getRdb()->addRdbBase1       ( coll ) ) { err=7; goto hadError; }
 
 	// now clean the trees
 	//cleanTrees();
@@ -451,7 +451,7 @@ bool Collectiondb::addRdbBasesForCollRec ( CollectionRec *cr ) {
 	return true;
 
  hadError:
-	log(LOG_WARN, "db: error registering coll: %s",mstrerror(g_errno));
+	log(LOG_WARN, "db: error registering coll[%d]: %s",err, mstrerror(g_errno));
 	return false;
 }
 
