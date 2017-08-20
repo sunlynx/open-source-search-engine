@@ -128,7 +128,7 @@ bool Rdb::init(const char *dbname,
 
 	// sanity check
 	if (m_ks != getKeySizeFromRdbId(m_rdbId)) {
-        log ( LOG_DEBUG,"db: sanity check for %s: m_ks=%d getKeySizeFromRdbId(m_rdbId)=%s",dbname,m_ks,getKeySizeFromRdbId(m_rdbId));
+        log ( LOG_DEBUG,"db: sanity check for %s: m_ks=%d getKeySizeFromRdbId(m_rdbId)=%d",dbname,m_ks,getKeySizeFromRdbId(m_rdbId));
 		g_process.shutdownAbort(true);
 	}
 
