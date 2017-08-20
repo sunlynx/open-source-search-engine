@@ -1719,7 +1719,9 @@ int main2 ( int argc , char *argv[] ) {
 
 	g_stable_summary_cache.configure(g_conf.m_stableSummaryCacheMaxAge, g_conf.m_stableSummaryCacheSize);
 	g_unstable_summary_cache.configure(g_conf.m_unstableSummaryCacheMaxAge, g_conf.m_unstableSummaryCacheSize);
-	
+    
+    
+    log(LOG_INFO, "Initializing webserver......");
 	// . then webserver
 	// . server should listen to a socket and register with g_loop
 	if ( ! g_httpServer.init( h9->getInternalHttpPort(), h9->getInternalHttpsPort() ) ) {
@@ -1727,11 +1729,12 @@ int main2 ( int argc , char *argv[] ) {
 		// this is dangerous!!! do not do the shutdown thing
 		return 1;
 	}
-
+    log(LOG_INFO, "Initializing registerMsgHandlers......");
 	// . now register all msg handlers with g_udp server
-	if ( ! registerMsgHandlers() ) {
-		log("db: registerMsgHandlers failed" ); return 1; }
-
+	if ( ! registerMsgHandlers() ) { log("db: registerMsgHandlers failed" ); return 1; }
+    
+    
+    log(LOG_INFO, "Initializing spellcheck......");
 	// gb spellcheck
 	if ( strcmp ( cmd , "spellcheck" ) == 0 ) {	
 		if ( argc != cmdarg + 2 ) goto printHelp; // take no other args
@@ -1751,15 +1754,18 @@ int main2 ( int argc , char *argv[] ) {
 	// . put this in here instead of Rdb.cpp because we don't want generator commands merging on us
 	// . niceness is 1
 	// BR: Upped from 2 sec to 60. No need to check for merge every 2 seconds.
+    
+    log(LOG_INFO, "Initializing registerSleepCallback......Rdb::attemptMergeAllCallback");
 	if (!g_loop.registerSleepCallback(60000, NULL, attemptMergeAllCallback, "Rdb::attemptMergeAllCallback", 1, true)) {
 		log( LOG_WARN, "db: Failed to init merge sleep callback." );
 	}
-
+    
+    log(LOG_INFO, "Initializing registerSleepCallback......Parms::tryToSyncWrapper");
 	// try to sync parms (and collection recs) with host 0
 	if (!g_loop.registerSleepCallback(1000, NULL, Parms::tryToSyncWrapper, "Parms::tryToSyncWrapper", 0)) {
 		return 0;
 	}
-
+    log(LOG_INFO, "Initializing registerSleepCallback......Statistics::initializ");
 	if ( !Statistics::initialize() ) {
 		return 0;
 	}
@@ -1769,6 +1775,7 @@ int main2 ( int argc , char *argv[] ) {
 	if(!WantedChecker::initialize())
 		return 0;
 */
+    log(LOG_INFO, "Initializing InstanceInfoExchange...........");
 	if(!InstanceInfoExchange::initialize())
         log( LOG_WARN, "db: Failed to Initialize InstanceInfoExchange." );
 		return 0;
