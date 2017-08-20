@@ -102,7 +102,7 @@ bool Rdb::init(const char *dbname,
 		  int32_t           maxTreeMem           ,
 		  int32_t           maxTreeNodes         ,
 		  bool           useHalfKeys          ,
-		  char           keySize              ,
+		  int32_t           keySize              ,
 		 bool			useIndexFile ) {
 	// reset all
 	reset();
@@ -128,6 +128,7 @@ bool Rdb::init(const char *dbname,
 
 	// sanity check
 	if (m_ks != getKeySizeFromRdbId(m_rdbId)) {
+        log ( LOG_DEBUG,"db: sanity check for %s: m_ks=%d getKeySizeFromRdbId(m_rdbId)=%s",dbname,m_ks,getKeySizeFromRdbId(m_rdbId));
 		g_process.shutdownAbort(true);
 	}
 
